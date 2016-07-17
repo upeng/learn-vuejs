@@ -10,7 +10,7 @@ function getJson(url,func){
         url: url,
         dataType: 'json',
         success: function(data){
-            if (data.code== 100000){
+            if (data.code == 100000){
                 func(data);
             }else{
                 alert('接口调用失败');
@@ -37,9 +37,9 @@ function pushDom(data){
         },
         methods:{
             addBook:function(){
-                this.book.id=parseInt(postData(this.book));
+                this.book.id = parseInt(postData(this.book));
                 this.books.push(this.book);
-                this.book='';
+                this.book = '';
             },
             delBook:function(book){
                 delData(book.id);
@@ -59,7 +59,7 @@ function postData(book){
         dataType: 'json',
         async: false,
         success: function(data){
-            if (data.code== 100000){
+            if (data.code == 100000){
                 id = data.data;
             }else{
                 alert(data.msg);
@@ -81,7 +81,7 @@ function delData(id){
         type: 'post', 
         dataType: 'json',
         success: function(data){
-            if (data.code== 100000){
+            if (data.code == 100000){
                 console.log(data.data);
             }else{
                 alert(data.msg);
