@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vuejs与后端的交互</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style type="text/css">
+        /*防止刷新页面出现vuejs变量名称*/
+        [v-cloak]{  
+            display: none;
+        } 
+    </style>
+    <script src="./jquery.min.js"></script>
+    <script src="./vue.min.js" ></script>
+</head>
+<body>
+    <div class="container">
+        <div class="col-md-8 col-md-offset-2">
+            <h1>Vue demo</h1>
+            <div id="app" v-cloak>
+                <table class="table table-condensed">
+                    <tr>
+                        <td class="text-center">序号</td>
+                        <td class="text-center">书名</td>
+                        <td class="text-center">作者</td>
+                        <td class="text-center">价格</td>
+                        <td class="text-right">操作</td>
+                    </tr>
+                    <tr v-for="book in books">
+                        <td class="success text-center">{{book.id}}</td>
+                        <td class="danger text-center">{{book.name}}</td>
+                        <td class="warning text-center">{{book.author}}</td>
+                        <td class="success text-center">{{book.price}}</td>
+                        <template v-if="book.id%2===0">
+                        <td class="text-right"><button class="btn btn-danger " v-on:click="delBook(book)">删除</button></td>
+                        </template>
+                        <template v-else>
+                            <td class="text-right"><button class="btn btn-success" v-on:click="delBook(book)">删除</button></td>
+                        </template>
+                    </tr>
+                </table>
+                <div id="add-book">
+                    <h2>添加书籍</h2>
+                    <div class="form-group">
+                        <label for="">书名</label>
+                        <input type="text" class="form-control" v-model="book.name">
+                    </div>
+                    <div class="form-group">
+                        <label for="">作者</label>
+                        <input type="text" class="form-control" v-model="book.author">
+                    </div>
+                    <div class="form-group">
+                        <label for="">价格</label>
+                        <input type="text" class="form-control" v-model="book.price">
+                    </div>
+                    
+                    <button class="btn btn-success" v-on:click="addBook()" id="addBook">添加</button>
+                </div>
+            </div>            
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="book.js" ></script>
+</html>
