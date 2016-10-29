@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuejs组件化学习-实现todolist</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<style type="text/css">
+		.finished{text-decoration: line-through}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="app" class="col-md-4 col-md-offset-4">
+			<my-task :list="tasks"></my-task>
+		</div>
+
+		<template id="task-template">
+			<table class="table table-hover">
+				<tr><td>content</td><td>finished</td><td>op</td></tr>
+				<template v-for="task in list"">
+					<tr>
+						<td :class="{'finished':task.finished}">{{task.content}}</td>
+						<td>{{task.finished}}</td>
+						<td><button class="button btn-primary" @click="toggleStatus(task)">click</button></td>
+						<!-- <td><button class="button btn-primary" @click="task.finished = !task.finished">click</button></td> -->
+					</tr>
+				</template>
+			</table>
+		</template>
+	</div>	
+</body>
+<script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script>
+	Vue.component('my-task', {	//注册组件类似于注册新标签，理解为创建my-task对象
+		template: "#task-template",
+		props: ['list'],	//理解为类的成员变量,实例需要传递参数至此变量，这样template才可以访问
+		methods: {
+		    toggleStatus: function (task) {
+		      task.finished = ! task.finished;
+		    }
+		}
+	});
+	new Vue({
+		el: "#app",
+		data: {
+			tasks:[
+				{content: 'first content', finished: false},
+				{content: 'second content', finished: false},
+				{content: 'third content', finished: false}
+			],
+		},
+		
+	});
+</script>
+</html>
+</html>
