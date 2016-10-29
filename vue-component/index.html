@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuejs组件化</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="container">
+		<div id="app" class="col-md-4 col-md-offset-4">
+			<counter heading="Likes" color="green" width="100px"></counter>
+			<counter heading="Dislikes" color="red" width="50px"></counter>
+		</div>
+		<template id="connter-template">
+			<h1>{{heading}}</h1>
+			<button @click="count += 1" type="button"  style="background: {{color}};width:{{width}}" class="btn btn-success">{{count}}</button>
+		</template>
+	</div>	
+</body>
+<script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script>
+	Vue.component('counter', {
+		template: "#connter-template",
+		props: ['heading', 'color', 'width'],
+		data: function(){
+			return { count:0 };
+		},
+	});
+
+	new Vue({
+		el: "#app",
+	});
+</script>
+</html>
