@@ -1,37 +1,32 @@
-# learn-vuejs
-> vuejs、ajax与php的交互
+## learn-vuejs
+## vuejs、ajax与php的交互
+###使用jquery、ajax与php交互
+  [code 示例][1]
+### 使用vuejs插件vue-resource与php的交互
+  [code 示例][2]
 
-* 使用jquery、ajax与php交互
-  [code 地址][1]  view模板：book.html
-* 使用vuejs插件vue-resource与php的交互
-  [code 地址][2]  view模板：book_vue_resource.html
+------
 
 
+## vuejs组件化学习
 
-
-> vuejs组件化学习
-
-[code实例][3] 
-
-vue-component/index.html 
-
+### vujes组件之间的交互
 **父组件向子组件传递数据**
 
-[code_地址][4] 
-vue-component/demo2.html 
+[code_示例1][3] 
+[code_示例2][4] 
 
 **子组件向父组件传递数据**
 
-[code_地址][5] 
-vue-component/demo1.html
+[code_示例][5] 
 
+------
 
-
-> vuejs组件化应用示例（todo list）
+### vuejs组件化应用示例（todo list）
 
 **vuejs实现todo list**
 
-[code_地址][6] vue-component/todolist.html
+[code_地址][6]
 
  [1]: https://github.com/upeng/learn-vuejs/blob/master/book.js
  [2]: https://github.com/upeng/learn-vuejs/blob/master/vue_resource_func.js
