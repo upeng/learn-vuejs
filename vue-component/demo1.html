@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuejs组件化学习-子组件向父组件传递数值</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="container">
+		<div id="app">	
+			<h1># vuejs组件化学习-子组件向父组件传递数值</h1>
+			<h3>total: {{total}}   | 10times: {{tentimes}}</h3>
+			<counter @increment="parentIncrement"></counter>
+			<counter @increment="parentIncrement"></counter>
+		</div>
+
+		<template id="connter-template">
+			<button style="width: 100px" class="button btn-success" @click="increment">{{count}}</button>
+		</template>
+	</div>	
+</body>
+<script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script>
+	var totalnum = 0; //全局变量
+	Vue.component('counter', {	//子组件
+		template: "#connter-template",
+		data: function(){
+			return {count:0}
+		},
+		methods:{
+			increment:function() {
+				this.count += 1;
+				totalnum += 1;
+				this.$emit('increment',[10,totalnum]); //子组件中的数值通过时间+参数 emit出来
+			}
+		}
+	});
+	new Vue({
+		el: "#app",
+		data: {
+			total: 0,
+			tentimes: 0,
+		},
+		methods: {
+			parentIncrement: function(ele){
+				// console.log(ele);
+				this.total = ele[1];	//等价于 this.total=totalnum;
+				this.tentimes += ele[0];
+			}
+		}
+	});
+</script>
+</html>

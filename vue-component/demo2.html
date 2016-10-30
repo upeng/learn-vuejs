@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vuejs组件化学习-父组件传递至子组件</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+</head>
+<body>
+	<div id="container">
+		<div id="app">	
+		<h1># vuejs组件化学习-父组件向子组件传递数值</h1>
+		<!-- 子组件获取父组件属性值 -->
+		<!-- 如果不适用冒号，没有将之绑定到vue的model,将会当做父组件普通属性值，获取不到data值 -->
+		<input type="text" v-model="parentHead"> --父组件数值
+			<counter :heads="parentHead"></counter> 
+			<!-- 子组件的heads属性绑定到父组件的headtxt属性 -->
+			<counter :list="tasks"></counter>
+			<!-- 子组件的list属性绑定到父组件的tasks属性 -->
+		</div>
+		
+		<template id="connter-template">
+			<h1>{{heads}}</h1>
+			<ul>
+				<li v-for="task in list">{{task}}</li>
+			</ul>
+		</template>
+	</div>	
+</body>
+<script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script>
+	Vue.component('counter', {	//子组件
+		template: "#connter-template",
+		props: ['heads', 'list']	//子组件需要注册heads和list属性
+	});
+
+	//父组件
+	new Vue({
+		el: "#app",
+		data: {
+			total: 0,
+			parentHead: 0,
+			tasks: ['content1', 'content2', 'content3']
+		},
+	});
+</script>
+</html>

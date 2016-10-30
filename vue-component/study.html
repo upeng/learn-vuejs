@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件冒泡等</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+	<style>
+		#app{
+			width: 600px;
+			margin: 200px 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="container">
+			<a href="https://baidu.com" @click.stop.prevent="Test"><span :style="styleObject">百度一下</span></a>
+			<p>
+				<input type="number" v-model.number="username">
+				<span>{{username}}</span>
+			</p>
+		</div>
+	</div>
+</body>
+<script src="http://cdn.jsdelivr.net/vue/1.0.26/vue.min.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: "#app",
+		data: {
+			styleObject:{
+				fontSize: '40px',
+			},
+			username: '',
+		},
+		methods:{
+			Test:function(){
+				alert('1');
+			}
+		}
+
+	});
+</script>
+</html>
