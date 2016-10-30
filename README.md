@@ -1,8 +1,8 @@
 ## learn-vuejs
-## vuejs、ajax与php的交互
-###使用jquery、ajax与php交互
+## vuejs与php的交互
+###1.使用jquery、ajax与php交互
   [code 示例][1]
-### 使用vuejs插件vue-resource与php的交互
+### 2.使用vuejs插件vue-resource与php的交互
   [code 示例][2]
 
 ------
@@ -10,7 +10,7 @@
 
 ## vuejs组件化学习
 
-### vujes组件之间的交互
+### 1.vujes组件之间的交互
 **父组件向子组件传递数据**
 
 [code_示例1][3] 
@@ -21,7 +21,7 @@
 [code_示例][5] 
 
 
-### vuejs组件化应用示例（todo list）
+### 2.vuejs组件化应用示例（todo list）
 
 **vuejs实现todo list**
 
